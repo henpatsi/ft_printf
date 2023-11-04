@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   tests.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 18:10:07 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/10/26 10:51:29 by hpatsi           ###   ########.fr       */
+/*   Created: 2023/11/04 10:48:58 by hpatsi            #+#    #+#             */
+/*   Updated: 2023/11/04 10:48:58 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
+#include "ft_printf.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+int test_noargs(void)
 {
-	size_t	i;
+    printf("noargs = \"hello\"\n");
+    printf("hello");
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("hello", "str");
+    printf("\n");
+    return (0);
+}
 
-	i = 0;
-	while (src[i] != 0)
-	{
-		if (i < dstsize - 1 && dstsize != 0)
-			dst[i] = src[i];
-		if (i == dstsize - 1 && dstsize != 0)
-			dst[i] = 0;
-		i++;
-	}
-	if (i <= dstsize - 1 && dstsize != 0)
-		dst[i] = 0;
-	return (i);
+int main(void)
+{
+    printf("printf || ft_printf");
+    test_noargs();
+    return (0);
 }

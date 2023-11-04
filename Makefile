@@ -1,21 +1,36 @@
 NAME = libftprintf.a
 
+LIBFT = ./libft/libft.a
+
 SOURCES = $(addprefix ./srcs/, ft_printf.c)
 
-OBJECTS = $(SOURCE:.c=.o)
+OBJECTS = $(SOURCES:.c=.o)
 
-INCLUDE_DIR = ./inclues/
+INCLUDES_DIR = ./includes/
 
-INCLUDE = $(addprefix $(INCLUDES_DIR), ft_printf.h libft.h)
+INCLUDES = $(addprefix $(INCLUDES_DIR), ft_printf.h libft.h)
 
-CFLAGS += -Wall -Wextra -Werror -I $(INCLUDE_DIR)
+CFLAGS += -Wall -Wextra -Werror -I $(INCLUDES_DIR)
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) libft.a
-	ar -rc $(NAME) $(OBJECTS) libft.a
+$(NAME): $(LIBFT) $(OBJECTS)
+	ar -rc $(NAME) $(OBJECTS)
 
-$(OBJECTS) = $(SOURCES)
-
-libft.a:
+$(LIBFT):
 	make -C ./libft/
+
+$(OBJECTS): $(SOURCES)
+
+clean:
+	rm -f $(OBJECTS)
+	make clean -C ./libft/
+
+fclean: clean
+	rm -f $(NAME)
+	rm -f $(LIBFT)
+
+re: fclean all
+
+test: all
+	cc $(CFLAGS) tests.c $(NAME) $(LIBFT)

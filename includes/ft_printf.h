@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 18:10:07 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/10/26 10:51:29 by hpatsi           ###   ########.fr       */
+/*   Created: 2023/11/04 10:47:28 by hpatsi            #+#    #+#             */
+/*   Updated: 2023/11/04 10:47:28 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	size_t	i;
+int ft_printf(const char *str, ...);
 
-	i = 0;
-	while (src[i] != 0)
-	{
-		if (i < dstsize - 1 && dstsize != 0)
-			dst[i] = src[i];
-		if (i == dstsize - 1 && dstsize != 0)
-			dst[i] = 0;
-		i++;
-	}
-	if (i <= dstsize - 1 && dstsize != 0)
-		dst[i] = 0;
-	return (i);
-}
+#endif

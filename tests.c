@@ -15,18 +15,31 @@
 
 int test_noargs(void)
 {
-    printf("noargs = \"hello\"\n");
+    printf("\nno args = (\"hello\")\n");
     printf("hello");
     printf(" || ");
     fflush(stdout);
-    ft_printf("hello", "str");
+    ft_printf("hello");
+    printf("\n");
+    return (0);
+}
+
+int test_chararg(void)
+{
+    printf("\nchar arg = (\"hello mr %%c\", 'A')\n");
+    printf("hello mr %c", 'A');
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("hello mr %c", 'A');
     printf("\n");
     return (0);
 }
 
 int main(void)
 {
-    printf("printf || ft_printf");
+    printf("\nprintf || ft_printf\n");
     test_noargs();
+    test_chararg();
+    printf("\n");
     return (0);
 }

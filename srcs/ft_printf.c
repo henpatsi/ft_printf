@@ -12,8 +12,43 @@
 
 #include "ft_printf.h"
 
+static char  is_conversion(const char **strptr)
+{
+    if (**strptr == '%' && *(*strptr + 1) != 0)
+    {
+        *strptr = *strptr + 1;
+        return (1);
+    }
+    return (0);
+}
+
+static void handle_conversion(const char *str, int arg)
+{
+    if (*str == 'c')
+        ft_putchar_fd(arg, 1);
+    else if (*str == 'i' || *str == 'd')
+        ft_putnbr_fd(arg, 1);
+    else if (*str == 'u')
+        ft_putunbr_fd(arg, 1);
+    else
+        ft_putstr_fd("(not yet implemented)", 1);
+}
+
 int ft_printf(const char *str, ...)
 {
-    ft_putstr_fd((char *) str, 1);
+    va_list arg_ptr;
+
+    va_start(arg_ptr, str);
+    while (*str != 0)
+    {
+        if (is_conversion(&str))
+        {
+            handle_conversion(str, va_arg(arg_ptr, int));
+        }
+        else
+            ft_putchar_fd(*str, 1);
+        str++;
+    }
+    va_end(arg_ptr);
     return (0);
 }

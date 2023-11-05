@@ -22,14 +22,16 @@ static char  is_conversion(const char **strptr)
     return (0);
 }
 
-static void handle_conversion(const char *str, int arg)
+static void handle_conversion(const char *str, va_list *arg_ptr_ptr)
 {
     if (*str == 'c')
-        ft_putchar_fd(arg, 1);
-    else if (*str == 'i' || *str == 'd')
-        ft_putnbr_fd(arg, 1);
+        ft_putchar_fd(va_arg(*arg_ptr_ptr, int), 1);
+    else if (*str == 's')
+        ft_putstr_fd(va_arg(*arg_ptr_ptr, char *), 1);
+    else if (*str == 'd' || *str == 'i')
+        ft_putnbr_fd(va_arg(*arg_ptr_ptr, int), 1);
     else if (*str == 'u')
-        ft_putunbr_fd(arg, 1);
+        ft_putunbr_fd(va_arg(*arg_ptr_ptr, unsigned int), 1);
     else
         ft_putstr_fd("(not yet implemented)", 1);
 }
@@ -42,9 +44,7 @@ int ft_printf(const char *str, ...)
     while (*str != 0)
     {
         if (is_conversion(&str))
-        {
-            handle_conversion(str, va_arg(arg_ptr, int));
-        }
+            handle_conversion(str, &arg_ptr);
         else
             ft_putchar_fd(*str, 1);
         str++;

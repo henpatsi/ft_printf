@@ -28,12 +28,20 @@ static void	handle_conversion(const char *str, va_list *arg_ptr_ptr)
 		ft_putchar_fd(va_arg(*arg_ptr_ptr, int), 1);
 	else if (*str == 's')
 		ft_putstr_fd(va_arg(*arg_ptr_ptr, char *), 1);
+	else if (*str == 'p')
+		ft_putaddr_fd(va_arg(*arg_ptr_ptr, void *), 1);
 	else if (*str == 'd' || *str == 'i')
 		ft_putnbr_fd(va_arg(*arg_ptr_ptr, int), 1);
 	else if (*str == 'u')
 		ft_putunbr_fd(va_arg(*arg_ptr_ptr, unsigned int), 1);
+	else if (*str == 'x')
+		ft_puthex_fd(va_arg(*arg_ptr_ptr, unsigned int), 0, 1);
+	else if (*str == 'X')
+		ft_puthex_fd(va_arg(*arg_ptr_ptr, unsigned int), 1, 1);
+	else if (*str == '%')
+		ft_putchar_fd('%', 1);
 	else
-		ft_putstr_fd("(NOT YET IMPLEMENTED)", 1);
+		ft_putstr_fd("(NOT SUPPORTED)", 1);
 }
 
 int	ft_printf(const char *str, ...)

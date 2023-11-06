@@ -74,11 +74,18 @@ int test_p_conv(void)
 {
 	printf("\n\n--- p_CONVERSION ---\n");
 
-    printf("\nargs = (\"address: %%p\", \"address of this\")\n");
-    printf("address: %p", "address of this");
+    printf("\nargs = (\"address: %%p\", \"address 1\")\n");
+    printf("address: %p", "address 1");
     printf(" || ");
     fflush(stdout);
-    ft_printf("address: %p", "address of this");
+    ft_printf("address: %p", "address 1");
+    printf("\n");
+
+	printf("\nargs = (\"address: %%p\", \"address 2\")\n");
+    printf("address: %p", "address 2");
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("address: %p", "address 2");
     printf("\n");
 
     return (0);
@@ -102,11 +109,18 @@ int test_s_conv(void)
     ft_printf("%s %s", "hello", "mom");
     printf("\n");
 
-	printf("\nargs = (\"hello%%s$\", \"\")\n");
-    printf("hello%s$", "");
+	printf("\nargs = (\"%%s %%s$\", \"hello\", \"\")\n");
+    printf("%s %s$", "hello", "");
     printf(" || ");
     fflush(stdout);
-    ft_printf("hello%s$", "");
+    ft_printf("%s %s$", "hello", "");
+    printf("\n");
+
+	printf("\nargs = (\"%%s %%s$\", \"\", \"\")\n");
+    printf("%s %s$", "", "");
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("%s %s$", "", "");
     printf("\n");
 	
     return (0);
@@ -151,11 +165,11 @@ int test_d_conv(void)
     ft_printf("n. %d", INT_MIN);
     printf("\n");
 
-	printf("\nargs = (\"n. %%d\", 0x123)\n");
-    printf("n. %d", 0x123);
+	printf("\nargs = (\"n. %%d\", 0x64)\n");
+    printf("n. %d", 0x64);
     printf(" || ");
     fflush(stdout);
-    ft_printf("n. %d", 0x123);
+    ft_printf("n. %d", 0x64);
     printf("\n");
 
     return (0);
@@ -200,11 +214,11 @@ int test_i_conv(void)
     ft_printf("n. %i", INT_MIN);
     printf("\n");
 
-	printf("\nargs = (\"n. %%i\", 0x123)\n");
-    printf("n. %i", 0x123);
+	printf("\nargs = (\"n. %%i\", 0x64)\n");
+    printf("n. %i", 0x64);
     printf(" || ");
     fflush(stdout);
-    ft_printf("n. %i", 0x123);
+    ft_printf("n. %i", 0x64);
     printf("\n");
 
     return (0);
@@ -219,6 +233,13 @@ int test_u_conv(void)
     printf(" || ");
     fflush(stdout);
     ft_printf("n. %u", 0);
+    printf("\n");
+
+	printf("\nargs = (\"n. %%u\", 42)\n");
+    printf("n. %u", 42);
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("n. %u", 42);
     printf("\n");
 
 	printf("\nargs = (\"n. %%u\", 4294967295)\n");
@@ -242,6 +263,13 @@ int test_x_conv(void)
 {
 	printf("\n\n--- x_CONVERSION ---\n");
 
+	printf("\nargs = (\"n. %%x\", 0)\n");
+    printf("n. %x", 0);
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("n. %x", 0);
+    printf("\n");
+
     printf("\nargs = (\"n. %%x\", 42)\n");
     printf("n. %x", 42);
     printf(" || ");
@@ -256,6 +284,13 @@ int test_x_conv(void)
     ft_printf("n. %x", -1);
     printf("\n");
 
+	printf("\nargs = (\"n. %%x\", 0x64)\n");
+    printf("n. %x", 0x64);
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("n. %x", 0x64);
+    printf("\n");
+
     return (0);
 }
 
@@ -263,11 +298,32 @@ int test_X_conv(void)
 {
 	printf("\n\n--- X_CONVERSION ---\n");
 
+	printf("\nargs = (\"n. %%X\", 0)\n");
+    printf("n. %X", 0);
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("n. %X", 0);
+    printf("\n");
+
     printf("\nargs = (\"n. %%X\", 42)\n");
     printf("n. %X", 42);
     printf(" || ");
     fflush(stdout);
     ft_printf("n. %X", 42);
+    printf("\n");
+
+	printf("\nargs = (\"n. %%X\", -1)\n");
+    printf("n. %X", -1);
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("n. %X", -1);
+    printf("\n");
+
+	printf("\nargs = (\"n. %%X\", 0x64)\n");
+    printf("n. %X", 0x64);
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("n. %X", 0x64);
     printf("\n");
 
     return (0);
@@ -282,6 +338,13 @@ int test_percent_conv(void)
     printf(" || ");
     fflush(stdout);
     ft_printf("100 %%");
+    printf("\n");
+
+	printf("\nargs = (\"%%%%%%%%%%%%%%%%%%%%%%%%\")\n");
+    printf("%%%%%%%%%%%%");
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("%%%%%%%%%%%%");
     printf("\n");
 
     return (0);

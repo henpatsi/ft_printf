@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static int	get_size(unsigned long n)
 {
@@ -22,8 +22,6 @@ static int	get_size(unsigned long n)
 		n /= 16;
 		size++;
 	}
-	if (n < 0)
-		size++;
 	return (size);
 }
 

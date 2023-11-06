@@ -22,41 +22,53 @@ static char	is_conversion(const char **strptr)
 	return (0);
 }
 
-static void	handle_conversion(const char *str, va_list *arg_ptr_ptr)
+static int	handle_string_conversion(va_list *arg_ptr_ptr)
+{
+	char	*str;
+
+	str = va_arg(*arg_ptr_ptr, char *);
+	if (str == 0)
+		return (ft_i_putstr_fd("(null)", 1));
+	else
+		return (ft_i_putstr_fd(str, 1));
+}
+
+static int	handle_conversion(const char *str, va_list *arg_ptr_ptr)
 {
 	if (*str == 'c')
-		ft_putchar_fd(va_arg(*arg_ptr_ptr, int), 1);
+		return (ft_i_putchar_fd(va_arg(*arg_ptr_ptr, int), 1));
 	else if (*str == 's')
-		ft_putstr_fd(va_arg(*arg_ptr_ptr, char *), 1);
+		return (handle_string_conversion(arg_ptr_ptr));
 	else if (*str == 'p')
-		ft_putaddr_fd(va_arg(*arg_ptr_ptr, void *), 1);
+		return (ft_i_putaddr_fd(va_arg(*arg_ptr_ptr, void *), 1));
 	else if (*str == 'd' || *str == 'i')
-		ft_putnbr_fd(va_arg(*arg_ptr_ptr, int), 1);
+		return (ft_i_putnbr_fd(va_arg(*arg_ptr_ptr, int), 1));
 	else if (*str == 'u')
-		ft_putunbr_fd(va_arg(*arg_ptr_ptr, unsigned int), 1);
+		return (ft_i_putunbr_fd(va_arg(*arg_ptr_ptr, unsigned int), 1));
 	else if (*str == 'x')
-		ft_puthex_fd(va_arg(*arg_ptr_ptr, unsigned int), 0, 1);
+		return (ft_i_puthex_fd(va_arg(*arg_ptr_ptr, unsigned int), 0, 1));
 	else if (*str == 'X')
-		ft_puthex_fd(va_arg(*arg_ptr_ptr, unsigned int), 1, 1);
+		return (ft_i_puthex_fd(va_arg(*arg_ptr_ptr, unsigned int), 1, 1));
 	else if (*str == '%')
-		ft_putchar_fd('%', 1);
-	else
-		ft_putstr_fd("(NOT SUPPORTED)", 1);
+		return (ft_i_putchar_fd('%', 1));
+	return (0);
 }
 
 int	ft_printf(const char *str, ...)
 {
+	int		printed;
 	va_list	arg_ptr;
 
+	printed = 0;
 	va_start(arg_ptr, str);
 	while (*str != 0)
 	{
 		if (is_conversion(&str))
-			handle_conversion(str, &arg_ptr);
+			printed += handle_conversion(str, &arg_ptr);
 		else
-			ft_putchar_fd(*str, 1);
+			printed += ft_i_putchar_fd(*str, 1);
 		str++;
 	}
 	va_end(arg_ptr);
-	return (0);
+	return (printed);
 }

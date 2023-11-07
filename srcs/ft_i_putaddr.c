@@ -6,11 +6,12 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:33:46 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/07 09:49:51 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/07 10:23:56 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 int	ft_i_putaddr(void *ptr)
 {

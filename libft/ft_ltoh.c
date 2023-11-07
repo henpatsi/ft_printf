@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:36:01 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/06 12:41:44 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/07 10:21:22 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static int	get_size(unsigned long n)
 		n /= 16;
 		size++;
 	}
-	if (n < 0)
-		size++;
 	return (size);
 }
 

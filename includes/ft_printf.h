@@ -14,8 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
 
 int		ft_printf(const char *str, ...);
 int		ft_i_putchar(char c);
@@ -24,7 +22,5 @@ int		ft_i_putnbr(int n);
 int		ft_i_putunbr(unsigned int n);
 int		ft_i_puthex(unsigned int n, int use_capitals);
 int		ft_i_putaddr(void *ptr);
-char	*ft_itoh(unsigned int n, int use_captials);
-char	*ft_ltoh(unsigned long n, int use_capitals);
 
 #endif

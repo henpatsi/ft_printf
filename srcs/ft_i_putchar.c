@@ -6,11 +6,11 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:33:19 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/07 09:50:51 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/07 10:23:05 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_i_putchar(char c)
 {

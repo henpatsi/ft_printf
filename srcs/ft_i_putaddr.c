@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_i_putnbr_fd.c                                   :+:      :+:    :+:   */
+/*   ft_i_putaddr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 14:48:37 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/07 08:36:15 by hpatsi           ###   ########.fr       */
+/*   Created: 2023/11/06 15:33:46 by hpatsi            #+#    #+#             */
+/*   Updated: 2023/11/07 09:49:51 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_i_putnbr_fd(int n, int fd)
+int	ft_i_putaddr(void *ptr)
 {
-	int	written;
+	int		written;
+	char	*hexstr;
 
-	written = 0;
-	if (n == -2147483648)
-	{
-		return (ft_i_putstr_fd("-2147483648", fd));
-	}
-	if (n < 0)
-	{
-		if (ft_i_putchar_fd('-', fd) == -1)
-			return (-1);
-		written += 1;
-		n *= -1;
-	}
-	if (n >= 10)
-		written += ft_i_putnbr_fd(n / 10, fd);
-	n = (n % 10) + '0';
-	if (written == -1 || ft_i_putchar_fd(n, fd) == -1)
-		return (-1);
-	return (written + 1);
+	written = ft_i_putstr("0x");
+	hexstr = ft_ltoh((unsigned long) ptr, 0);
+	if (hexstr == 0)
+		return (0);
+	written += ft_i_putstr(hexstr);
+	free(hexstr);
+	return (written);
 }

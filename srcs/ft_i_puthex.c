@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_i_putchar_fd.c                                  :+:      :+:    :+:   */
+/*   ft_i_puthex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 14:33:19 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/06 16:08:33 by hpatsi           ###   ########.fr       */
+/*   Created: 2023/11/06 15:25:27 by hpatsi            #+#    #+#             */
+/*   Updated: 2023/11/07 09:50:49 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_i_putchar_fd(char c, int fd)
+int	ft_i_puthex(unsigned int n, int use_capitals)
 {
-	return (write(fd, &c, 1));
+	int		written;
+	char	*hexstr;
+
+	hexstr = ft_itoh(n, use_capitals);
+	if (hexstr == 0)
+		return (0);
+	written = ft_i_putstr(hexstr);
+	free(hexstr);
+	return (written);
 }

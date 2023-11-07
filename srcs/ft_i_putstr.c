@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_i_putunbr_fd.c                                  :+:      :+:    :+:   */
+/*   ft_i_putstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 15:18:02 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/06 16:09:34 by hpatsi           ###   ########.fr       */
+/*   Created: 2023/11/06 14:45:27 by hpatsi            #+#    #+#             */
+/*   Updated: 2023/11/07 09:49:21 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_i_putunbr_fd(unsigned int n, int fd)
+int	ft_i_putstr(char *s)
 {
 	int	written;
 
 	written = 0;
-	if (n >= 10)
-		written = ft_i_putunbr_fd(n / 10, fd);
-	n = (n % 10) + '0';
-	if (written == -1 || ft_i_putchar_fd(n, fd) == -1)
-		return (-1);
-	return (written + 1);
+	while (*s != 0)
+	{
+		written += ft_i_putchar(*s);
+		s++;
+	}
+	return (written);
 }

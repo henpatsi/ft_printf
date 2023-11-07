@@ -487,6 +487,12 @@ int test_return_value(void)
     ft_printf(" = %d", ft_printf("%%%%%%%%%%%%%%%%%%%%"));
     printf("\n");
 
+	printf("\nargs = (\" = %%d\", (ft_)printf((\"%%%%%%\")\n");
+    printf(" = %d", printf("%%%"));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("%%%"));
+    printf("\n");
 
 	printf("\nargs = (\" = %%d\", (ft_)printf(\"%%c%%s%%p%%d%%i%%u%%x%%X%%%%\", 'a', \"hi\", \"a\", 1, 2, 100, 0x42, 0x100)\n");
     printf(" = %d", printf("%c%s%p%d%i%u%x%X%%", 'a', "hi", "a", 1, 2, 100, 0x42, 0x100));

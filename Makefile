@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 
-LIBFT = libft.a
+LIBFT = ./libft/libft.a
 
 SOURCES = $(addprefix ./srcs/, ft_printf.c ft_i_putchar.c ft_i_putstr.c \
 			ft_i_putnbr.c ft_i_putunbr.c ft_i_puthex.c ft_i_putaddr.c \
@@ -48,6 +48,5 @@ re: fclean all
 
 tests: $(NAME)
 	cc tests.c $(NAME) -I $(INCLUDES_DIR) -o test.out
-	make fclean
 	leaks --atExit -q -- ./test.out
 	rm test.out

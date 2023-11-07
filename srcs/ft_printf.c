@@ -14,7 +14,7 @@
 
 static char	is_conversion(const char **strptr)
 {
-	if (**strptr == '%' && *(*strptr + 1) != 0)
+	if (**strptr == '%')
 	{
 		*strptr = *strptr + 1;
 		return (1);
@@ -67,7 +67,8 @@ int	ft_printf(const char *str, ...)
 			printed += handle_conversion(str, &arg_ptr);
 		else
 			printed += ft_i_putchar(*str);
-		str++;
+		if (*str != 0)
+			str++;
 	}
 	va_end(arg_ptr);
 	return (printed);

@@ -16,15 +16,14 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
-//# include "libft.h"
 
 int		ft_printf(const char *str, ...);
-int		ft_i_putchar_fd(char c, int fd);
-int		ft_i_putstr_fd(char *s, int fd);
-int		ft_i_putnbr_fd(int n, int fd);
-int		ft_i_putunbr_fd(unsigned int n, int fd);
-int		ft_i_puthex_fd(unsigned int n, int use_capitals, int fd);
-int		ft_i_putaddr_fd(void *ptr, int fd);
+int		ft_i_putchar(char c);
+int		ft_i_putstr(char *s);
+int		ft_i_putnbr(int n);
+int		ft_i_putunbr(unsigned int n);
+int		ft_i_puthex(unsigned int n, int use_capitals);
+int		ft_i_putaddr(void *ptr);
 char	*ft_itoh(unsigned int n, int use_captials);
 char	*ft_ltoh(unsigned long n, int use_capitals);
 

@@ -396,6 +396,20 @@ int test_return_value(void)
     ft_printf(" = %d", ft_printf("%c", '\t'));
     printf("\n");
 
+	printf("\nargs = (\"(ft_)printf(\"\\0\"))\n");
+    printf(" = %d", printf("\0"));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("\0"));
+    printf("\n");
+
+	printf("\nargs = (\"(ft_)printf(\"\\001\\002\\007\\v\\010\\f\\r\\n\"))\n");
+    printf(" = %d", printf("\001\002\007\v\010\f\r\n"));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("\001\002\007\v\010\f\r\n"));
+    printf("\n");
+
 	printf("\nargs = (\" = %%d\", (ft_)printf(\"hello %%s\", \"mom\"))\n");
     printf(" = %d", printf("hello %s", "mom"));
     printf(" || ");
@@ -408,6 +422,13 @@ int test_return_value(void)
     printf(" || ");
     fflush(stdout);
     ft_printf(" = %d", ft_printf("hello %s", (void *)0));
+    printf("\n");
+
+	printf("\nargs = (\" = %%s\", (ft_)printf(\"\\0\"))\n");
+    printf(" = %d", printf("\0"));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("\0"));
     printf("\n");
 
 	printf("\nargs = (\" = %%d\", (ft_)printf(\"wow %%d\", 4242))\n");

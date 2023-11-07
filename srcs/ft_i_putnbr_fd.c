@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:48:37 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/06 16:09:09 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/07 08:36:15 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ int	ft_i_putnbr_fd(int n, int fd)
 	{
 		if (ft_i_putchar_fd('-', fd) == -1)
 			return (-1);
+		written += 1;
 		n *= -1;
 	}
 	if (n >= 10)
-		written = ft_i_putnbr_fd(n / 10, fd);
+		written += ft_i_putnbr_fd(n / 10, fd);
 	n = (n % 10) + '0';
 	if (written == -1 || ft_i_putchar_fd(n, fd) == -1)
 		return (-1);

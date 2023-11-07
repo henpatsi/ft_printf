@@ -14,7 +14,7 @@
 
 static char	is_conversion(const char **strptr)
 {
-	if (**strptr == '%' && *(*strptr + 1) != 0)
+	if (**strptr == '%')
 	{
 		*strptr = *strptr + 1;
 		return (1);

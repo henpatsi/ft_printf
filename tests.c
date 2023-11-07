@@ -403,11 +403,39 @@ int test_return_value(void)
     ft_printf(" = %d", ft_printf("hello %s", "mom"));
     printf("\n");
 
+	printf("\nargs = (\" = %%d\", (ft_)printf(\"hello %%s\", (void *)0))\n");
+    printf(" = %d", printf("hello %s", (void *)0));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("hello %s", (void *)0));
+    printf("\n");
+
 	printf("\nargs = (\" = %%d\", (ft_)printf(\"wow %%d\", 4242))\n");
     printf(" = %d", printf("wow %d", 4242));
     printf(" || ");
     fflush(stdout);
     ft_printf(" = %d", ft_printf("wow %d", 4242));
+    printf("\n");
+
+	printf("\nargs = (\" = %%d\", (ft_)printf(\"wow %%i\", -100))\n");
+    printf(" = %d", printf("wow %i", -100));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("wow %i", -100));
+    printf("\n");
+
+	printf("\nargs = (\" = %%d\", (ft_)printf(\"wow %%i\", INT_MAX))\n");
+    printf(" = %d", printf("wow %i", INT_MAX));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("wow %i", INT_MAX));
+    printf("\n");
+
+	printf("\nargs = (\" = %%d\", (ft_)printf(\"wow %%i\", INT_MIN))\n");
+    printf(" = %d", printf("wow %i", INT_MIN));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("wow %i", INT_MIN));
     printf("\n");
 
 	printf("\nargs = (\" = %%d\", (ft_)printf(\"wow %%u\", -1))\n");
@@ -431,7 +459,15 @@ int test_return_value(void)
     ft_printf(" = %d", ft_printf("%p", "hello"));
     printf("\n");
 
-	printf("\nargs = (\" = %%d\", (ft_)printf()\n");
+	printf("\nargs = (\" = %%d\", (ft_)printf((\"%%%%%%%%%%%%%%%%%%%%\")\n");
+    printf(" = %d", printf("%%%%%%%%%%%%%%%%%%%%"));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("%%%%%%%%%%%%%%%%%%%%"));
+    printf("\n");
+
+
+	printf("\nargs = (\" = %%d\", (ft_)printf(\"%%c%%s%%p%%d%%i%%u%%x%%X%%%%\", 'a', \"hi\", \"a\", 1, 2, 100, 0x42, 0x100)\n");
     printf(" = %d", printf("%c%s%p%d%i%u%x%X%%", 'a', "hi", "a", 1, 2, 100, 0x42, 0x100));
     printf(" || ");
     fflush(stdout);

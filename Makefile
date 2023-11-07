@@ -40,4 +40,6 @@ fclean: clean
 re: fclean all
 
 tests: $(NAME)
-	cc $(CFLAGS) tests.c $(NAME)
+	cc $(CFLAGS) tests.c $(NAME) -o test.out
+	leaks --atExit -q -- ./test.out
+	rm test.out

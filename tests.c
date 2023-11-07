@@ -66,6 +66,55 @@ int test_c_conv(void)
     fflush(stdout);
     ft_printf("3000: %c", 3000);
     printf("\n");
+
+	printf("\nargs = (\"0: %%c\", 0)\n");
+    printf("0: %c", 0);
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("0: %c", 0);
+    printf("\n");
+	
+    return (0);
+}
+
+int test_s_conv(void)
+{
+	printf("\n\n--- s_CONVERSION ---\n");
+
+    printf("\nargs = (\"hello %%s\", \"mom\")\n");
+    printf("hello %s", "mom");
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("hello %s", "mom");
+    printf("\n");
+
+	printf("\nargs = (\"%%s %%s\", \"hello\", \"mom\")\n");
+    printf("%s %s", "hello", "mom");
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("%s %s", "hello", "mom");
+    printf("\n");
+
+	printf("\nargs = (\"%%s%%s$\", \"hello\", \"\")\n");
+    printf("%s%s$", "hello", "");
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("%s%s$", "hello", "");
+    printf("\n");
+
+	printf("\nargs = (\"%%s %%s$\", \"\", \"\")\n");
+    printf("%s %s$", "", "");
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("%s %s$", "", "");
+    printf("\n");
+
+	printf("\nargs = (\"%%s\", (void *)0)\n");
+    printf("%s", (void *)0);
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("%s", (void *)0);
+    printf("\n");
 	
     return (0);
 }
@@ -88,41 +137,13 @@ int test_p_conv(void)
     ft_printf("address: %p", "address 2");
     printf("\n");
 
-    return (0);
-}
-
-int test_s_conv(void)
-{
-	printf("\n\n--- s_CONVERSION ---\n");
-
-    printf("\nargs = (\"hello %%s\", \"mom\")\n");
-    printf("hello %s", "mom");
+	printf("\nargs = (\"address: %%p\", (void *)0)\n");
+    printf("address: %p", (void *)0);
     printf(" || ");
     fflush(stdout);
-    ft_printf("hello %s", "mom");
+    ft_printf("address: %p", (void *)0);
     printf("\n");
 
-	printf("\nargs = (\"%%s %%s\", \"hello\", \"mom\")\n");
-    printf("%s %s", "hello", "mom");
-    printf(" || ");
-    fflush(stdout);
-    ft_printf("%s %s", "hello", "mom");
-    printf("\n");
-
-	printf("\nargs = (\"%%s %%s$\", \"hello\", \"\")\n");
-    printf("%s %s$", "hello", "");
-    printf(" || ");
-    fflush(stdout);
-    ft_printf("%s %s$", "hello", "");
-    printf("\n");
-
-	printf("\nargs = (\"%%s %%s$\", \"\", \"\")\n");
-    printf("%s %s$", "", "");
-    printf(" || ");
-    fflush(stdout);
-    ft_printf("%s %s$", "", "");
-    printf("\n");
-	
     return (0);
 }
 
@@ -236,24 +257,24 @@ int test_u_conv(void)
     printf("\n");
 
 	printf("\nargs = (\"n. %%u\", 42)\n");
-    printf("n. %u", 42);
+    printf("n. %u", 1);
     printf(" || ");
     fflush(stdout);
-    ft_printf("n. %u", 42);
+    ft_printf("n. %u", 1);
     printf("\n");
 
-	printf("\nargs = (\"n. %%u\", 4294967295)\n");
-    printf("n. %u", (unsigned int) 4294967295);
-    printf(" || ");
-    fflush(stdout);
-    ft_printf("n. %u", (unsigned int) 4294967295);
-    printf("\n");
-
-    printf("\nargs = (\"n. %%u\", -1)\n");
+	printf("\nargs = (\"n. %%u\", -1)\n");
     printf("n. %u", -1);
     printf(" || ");
     fflush(stdout);
     ft_printf("n. %u", -1);
+    printf("\n");
+
+	printf("\nargs = (\"n. %%u\", UINT_MAX)\n");
+    printf("n. %u", UINT_MAX);
+    printf(" || ");
+    fflush(stdout);
+    ft_printf("n. %u", UINT_MAX);
     printf("\n");
 
     return (0);
@@ -350,6 +371,76 @@ int test_percent_conv(void)
     return (0);
 }
 
+int test_return_value(void)
+{
+	printf("\n\n--- RETURN_VALUE ---\n");
+
+	printf("\nargs = (\" = %%d\", (ft_)printf(\"hello\"))\n");
+    printf(" = %d", printf("hello"));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("hello"));
+    printf("\n");
+
+	printf("\nargs = (\" = %%d\", (ft_)printf(\"\"))\n");
+    printf(" = %d", printf(""));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf(""));
+    printf("\n");
+
+	printf("\nargs = (\" = %%d\", (ft_)printf(\"%%c\", '\\t'))\n");
+    printf(" = %d", printf("%c", '\t'));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("%c", '\t'));
+    printf("\n");
+
+	printf("\nargs = (\" = %%d\", (ft_)printf(\"hello %%s\", \"mom\"))\n");
+    printf(" = %d", printf("hello %s", "mom"));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("hello %s", "mom"));
+    printf("\n");
+
+	printf("\nargs = (\" = %%d\", (ft_)printf(\"wow %%d\", 4242))\n");
+    printf(" = %d", printf("wow %d", 4242));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("wow %d", 4242));
+    printf("\n");
+
+	printf("\nargs = (\" = %%d\", (ft_)printf(\"wow %%u\", -1))\n");
+    printf(" = %d", printf("wow %u", -1));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("wow %u", -1));
+    printf("\n");
+
+	printf("\nargs = (\" = %%d\", (ft_)printf(\"wow %%x\", -1))\n");
+    printf(" = %d", printf("wow %x", -1));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("wow %x", -1));
+    printf("\n");
+
+	printf("\nargs = (\" = %%d\", (ft_)printf(\"%%p\", \"hello\"))\n");
+    printf(" = %d", printf("%p", "hello"));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("%p", "hello"));
+    printf("\n");
+
+	printf("\nargs = (\" = %%d\", (ft_)printf()\n");
+    printf(" = %d", printf("%c%s%p%d%i%u%x%X%%", 'a', "hi", "a", 1, 2, 100, 0x42, 0x100));
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(" = %d", ft_printf("%c%s%p%d%i%u%x%X%%", 'a', "hi", "a", 1, 2, 100, 0x42, 0x100));
+    printf("\n");
+
+    return (0);
+}
+
 int main(void)
 {
     printf("\nprintf || ft_printf\n");
@@ -364,6 +455,7 @@ int main(void)
     test_x_conv();
     test_X_conv();
     test_percent_conv();
+	test_return_value();
     printf("\n");
 
     return (0);

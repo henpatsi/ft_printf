@@ -23,6 +23,8 @@ SOURCES = $(addprefix $(SOURCES_DIR), ft_printf.c ft_i_putchar.c ft_i_putstr.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 
+LIBFT_OBJECTS = ft_itoh.o ft_ltoh.o
+
 INCLUDES_DIR = ./includes/
 
 INCLUDES = $(addprefix $(INCLUDES_DIR), ft_printf.h libft.h)
@@ -32,8 +34,8 @@ CFLAGS += -Wall -Wextra -Werror -I $(INCLUDES_DIR)
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT)
-	ar -x $(LIBFT) $(SOURCES_DIR)
-	ar -rc $(NAME) $(OBJECTS)
+	cp $(LIBFT) $(NAME)
+	ar -r $(NAME) $(OBJECTS)
 
 $(OBJECTS): $(SOURCES)
 

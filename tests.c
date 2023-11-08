@@ -397,7 +397,7 @@ int	test_errors(void)
     fflush(stdout);
     ft_printf(" = %d", ft_printf("\0"));
     printf("\n");
-	
+
 	return (0);
 }
 
@@ -447,11 +447,11 @@ int test_return_value(void)
     ft_printf(" = %d", ft_printf("%s", "\0 123"));
     printf("\n");
 
-	printf("\nargs = (\" = %%d\", (ft_)printf(\"wow %%d\", 4242))\n");
-    printf(" = %d", printf("wow %d", 4242));
+	printf("\nargs = (\" = %%d\", (ft_)printf(\"%%d\", 4242))\n");
+    printf(" = %d", printf("%d", 4242));
     printf(" || ");
     fflush(stdout);
-    ft_printf(" = %d", ft_printf("wow %d", 4242));
+    ft_printf(" = %d", ft_printf("%d", 4242));
     printf("\n");
 
 	printf("\nargs = (\" = %%d\", (ft_)printf(\"wow %%i\", -100))\n");

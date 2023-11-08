@@ -58,15 +58,17 @@ int	ft_printf(const char *str, ...)
 {
 	int		printed;
 	va_list	arg_ptr;
+	int		temp;
 
 	printed = 0;
 	va_start(arg_ptr, str);
 	while (*str != 0)
 	{
 		if (is_conversion(&str))
-			printed += handle_conversion(str, &arg_ptr);
+			temp = handle_conversion(str, &arg_ptr);
 		else
-			printed += ft_i_putchar(*str);
+			temp = ft_i_putchar(*str);
+		printed = ft_add_check_error(printed, temp);
 		if (*str != 0)
 			str++;
 	}

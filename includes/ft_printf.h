@@ -21,5 +21,6 @@ int		ft_i_putnbr(int n);
 int		ft_i_putunbr(unsigned int n);
 int		ft_i_puthex(unsigned int n, int use_capitals);
 int		ft_i_putaddr(void *ptr);
+int		ft_add_check_error(int value, int temp);
 
 #endif

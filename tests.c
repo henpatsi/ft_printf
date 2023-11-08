@@ -368,6 +368,15 @@ int test_percent_conv(void)
     ft_printf("%%%%%%%%%%%%");
     printf("\n");
 
+	char	*str = "percent = %";
+	printf("\nargs = (str, \"hello\")\n");
+	printf("str = \"percent = %%\"\n");
+    printf(str, "hello");
+    printf(" || ");
+    fflush(stdout);
+    ft_printf(str, "hello");
+    printf("\n");
+
     return (0);
 }
 

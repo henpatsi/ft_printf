@@ -12,6 +12,13 @@
 
 #include "ft_printf.h"
 
+int	ft_add_check_error(int value, int temp)
+{
+	if (temp == -1 || value == -1)
+		return (-1);
+	return (value + temp);
+}
+
 static char	is_conversion(const char **strptr)
 {
 	if (**strptr == '%')

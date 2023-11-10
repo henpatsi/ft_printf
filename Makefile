@@ -18,13 +18,10 @@ LIBFT = $(LIBFT_DIR)libft.a
 
 SOURCES_DIR = ./srcs/
 
-SOURCES = $(addprefix $(SOURCES_DIR), ft_printf.c ft_i_putchar.c ft_i_putstr.c \
-			ft_i_putnbr.c ft_i_putunbr.c ft_i_puthex.c ft_i_putaddr.c \
-			ft_add_check_error.c)
+SOURCES = $(addprefix $(SOURCES_DIR), ft_printf.c ft_printf_strutils.c \
+			ft_printf_nbrutils.c ft_printf_hexutils.c)
 
 OBJECTS = $(SOURCES:.c=.o)
-
-LIBFT_OBJECTS = ft_itoh.o ft_ltoh.o
 
 INCLUDES_DIR = ./includes/
 
@@ -55,5 +52,5 @@ re: fclean all
 
 tests: $(NAME)
 	cc tests.c $(NAME) -I $(INCLUDES_DIR) -o test.out
-	leaks --atExit -q -- ./test.out
+	./test.out
 	rm test.out

@@ -12,8 +12,18 @@
 
 #include "libft.h"
 
+static void	putlonghex_fd(unsigned long n, int fd)
+{
+	if (n >= 16)
+		putlonghex_fd(n / 16, fd);
+	n = (n % 16) + '0';
+	if (n > '9')
+		n += ('a' - '9' - 1);
+	ft_putchar_fd(n, fd);
+}
+
 void	ft_putaddr_fd(void *ptr, int fd)
 {
 	ft_putstr_fd("0x", 1);
-	ft_putstr_fd(ft_ltoh((unsigned long) ptr, 0), fd);
+	putlonghex_fd((unsigned long) ptr, fd);
 }

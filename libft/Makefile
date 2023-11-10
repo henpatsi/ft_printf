@@ -6,7 +6,7 @@
 #    By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 08:42:34 by hpatsi            #+#    #+#              #
-#    Updated: 2023/11/02 14:44:34 by hpatsi           ###   ########.fr        #
+#    Updated: 2023/11/07 09:09:44 by hpatsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SOURCES = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 
-INCLUDES_DIR = ../includes/
+INCLUDES_DIR = ../includes
 
 CFLAGS += -Wall -Wextra -Werror -I $(INCLUDES_DIR)
 

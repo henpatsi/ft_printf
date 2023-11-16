@@ -6,7 +6,7 @@
 /*   By: hpatsi <hpatsi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:39:26 by hpatsi            #+#    #+#             */
-/*   Updated: 2023/11/10 13:18:41 by hpatsi           ###   ########.fr       */
+/*   Updated: 2023/11/16 12:52:47 by hpatsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	ft_i_puthex(unsigned int n, int use_capitals)
 	n = (n % 16) + '0';
 	if (n > '9')
 		n += dif;
+	if (written == -1)
+		return (-1);
 	written = ft_add_check_error(written, ft_i_putchar(n));
 	return (written);
 }
@@ -42,6 +44,8 @@ static int	i_putlonghex(unsigned long n)
 	n = (n % 16) + '0';
 	if (n > '9')
 		n += ('a' - '9' - 1);
+	if (written == -1)
+		return (-1);
 	written = ft_add_check_error(written, ft_i_putchar(n));
 	return (written);
 }
@@ -51,6 +55,8 @@ int	ft_i_putaddr(void *ptr)
 	int	written;
 
 	written = ft_i_putstr("0x");
+	if (written == -1)
+		return (-1);
 	written = ft_add_check_error(written, i_putlonghex((unsigned long) ptr));
 	return (written);
 }

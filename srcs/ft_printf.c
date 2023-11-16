@@ -76,6 +76,8 @@ int	ft_printf(const char *str, ...)
 		else
 			temp = ft_i_putchar(*str);
 		printed = ft_add_check_error(printed, temp);
+		if (printed == -1)
+			return (-1);
 		if (*str != 0)
 			str++;
 	}

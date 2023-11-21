@@ -18,9 +18,7 @@ int	ft_i_putnbr(int n)
 
 	written = 0;
 	if (n == -2147483648)
-	{
 		return (ft_i_putstr("-2147483648"));
-	}
 	if (n < 0)
 	{
 		written = ft_add_check_error(written, ft_i_putchar('-'));
